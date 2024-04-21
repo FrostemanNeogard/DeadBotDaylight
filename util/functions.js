@@ -1,4 +1,6 @@
 const fs = require("fs");
+const addonData = require("../data/addons.json");
+
 const getFiles = (path, ending) => {
   return fs.readdirSync(path).filter((f) => f.endsWith(ending));
 };
@@ -14,7 +16,15 @@ const capitalizeFirstLetters = (string) => {
   return output.join(" ");
 };
 
+const fetchKillerNames = () => {
+  const killerNames = addonData.map((item) => {
+    return { name: item.name, value: item.name };
+  });
+  return killerNames;
+};
+
 module.exports = {
   getFiles,
   capitalizeFirstLetters,
+  fetchKillerNames,
 };
