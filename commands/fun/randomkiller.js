@@ -49,6 +49,6 @@ module.exports = {
 
     const randomIndex = Math.floor(Math.random() * killers.length);
     const responseMessage = `Your randomly selected killer is: ${killers[randomIndex]}`;
-    await interaction.reply(responseMessage);
+    await interaction.reply({ ephemeral: true, content: responseMessage });
   },
 };
