@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, Colors } = require("discord.js");
-const data = require("../../data.json");
+const data = require("../../data/perks.json");
 const { EmbedBuilder } = require("@discordjs/builders");
 
 module.exports = {
@@ -15,20 +15,11 @@ module.exports = {
         .setName("perkname")
         .setDescription("Perk name to search for")
         .setRequired(true)
-        .addChoices(
-          {
-            name: "Lithe",
-            value: "Lithe",
-          },
-          {
-            name: "Nurse's Calling",
-            value: "A Nurse's Calling",
-          }
-        )
     ),
   async execute(interaction) {
     const unformattedPerkName = interaction.options.getString("perkname");
-    const perkData = data.filter(
+    const allData = [data.survivor, data.killer];
+    const perkData = allData.filter(
       (item) =>
         formatPerkName(item.name) === formatPerkName(unformattedPerkName)
     );
