@@ -10,9 +10,6 @@ const {
 
 module.exports = {
   name: "addon",
-  category: "main",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("addon")
     .setDescription(

@@ -3,9 +3,6 @@ const { getRandomPerks } = require("../../util/functions");
 
 module.exports = {
   name: "randomperks",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomperks")
     .setDescription(`Replies with a random perk.`)

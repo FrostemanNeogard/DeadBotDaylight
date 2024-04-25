@@ -3,9 +3,6 @@ const { getRandomOffering } = require("../../util/functions");
 
 module.exports = {
   name: "randomoffering",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomoffering")
     .setDescription(`Responds with a random offering quality`),

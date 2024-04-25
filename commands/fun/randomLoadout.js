@@ -10,9 +10,6 @@ const {
 
 module.exports = {
   name: "randomloadout",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomloadout")
     .setDescription(`Responds with a random survivor- or killer loadout`)

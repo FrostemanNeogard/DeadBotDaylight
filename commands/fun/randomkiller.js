@@ -3,9 +3,6 @@ const { getRandomKiller } = require("../../util/functions");
 
 module.exports = {
   name: "randomkiller",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomkiller")
     .setDescription(`Responds with a random killer name`),

@@ -4,9 +4,6 @@ const { EmbedBuilder } = require("@discordjs/builders");
 
 module.exports = {
   name: "perk",
-  category: "main",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("perk")
     .setDescription(`Replies with information about a given perk.`)

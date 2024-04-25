@@ -2,9 +2,6 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   name: "ping",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription(`Replies with "Pong!"`),

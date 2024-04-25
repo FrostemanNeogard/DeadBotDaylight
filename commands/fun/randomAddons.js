@@ -3,9 +3,6 @@ const { getRandomAddons } = require("../../util/functions");
 
 module.exports = {
   name: "randomaddons",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomaddons")
     .setDescription(

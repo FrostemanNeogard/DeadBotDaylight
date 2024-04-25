@@ -2,9 +2,6 @@ const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
   name: "randomaddonqualities",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomaddonqualities")
     .setDescription(`Responds with two random addon qualities`),

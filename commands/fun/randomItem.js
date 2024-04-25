@@ -3,9 +3,6 @@ const { getRandomItem } = require("../../util/functions");
 
 module.exports = {
   name: "randomitem",
-  category: "info",
-  permissions: [],
-  devCommand: false,
   data: new SlashCommandBuilder()
     .setName("randomitem")
     .setDescription(`Responds with a random survivor item.`),
