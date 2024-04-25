@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-const data = require("../../data/perks.json");
+const { getRandomPerks } = require("../../util/functions");
 
 module.exports = {
   name: "randomperks",
@@ -28,22 +28,7 @@ module.exports = {
   async execute(interaction) {
     const isKillerPerk =
       interaction.options.getString("role") == "k" ? true : false;
-    let perkName = "";
-    let perks = [];
-    if (isKillerPerk) {
-      for (let i = 0; i < 4; i++) {
-        let randomIndex = Math.floor(Math.random() * data.killer.length);
-        perkName = data.killer[randomIndex].name;
-        perks.push(perkName);
-      }
-    } else {
-      for (let i = 0; i < 4; i++) {
-        let randomIndex = Math.floor(Math.random() * data.killer.length);
-        perkName = data.survivor[randomIndex].name;
-        perks.push(perkName);
-      }
-    }
-
+    const perks = getRandomPerks(isKillerPerk);
     await interaction.reply({
       ephemeral: true,
       content: `**Your random perks are: **\n- ${perks.join("\n- ")}`,
