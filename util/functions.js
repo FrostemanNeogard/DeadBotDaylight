@@ -1,7 +1,7 @@
 const fs = require("fs");
 const addonData = require("../data/addons.json");
 const perkData = require("../data/perks.json");
-const randomkiller = require("../commands/fun/randomkiller");
+const randomkiller = require("../commands/fun/randomKiller");
 
 const getFiles = (path, ending) => {
   return fs.readdirSync(path).filter((f) => f.endsWith(ending));
@@ -193,9 +193,9 @@ function getRandomKiller() {
     "Trapper",
     "Wraith",
     "Hillbilly",
-    "Nurs",
+    "Nurse",
     "Huntress",
-    "Myers",
+    "Shape",
     "Hag",
     "Doctor",
     "Pig",
@@ -206,7 +206,7 @@ function getRandomKiller() {
     "Ghostface",
     "Demogorgon",
     "Deathslinger",
-    "Pyramid head",
+    "Executioner",
     "Blight",
     "Twins",
     "Trickster",
@@ -218,13 +218,13 @@ function getRandomKiller() {
     "Singularity",
     "Skull merchant",
     "Knight",
-    "Wesker",
+    "Mastermind",
     "Dredge",
-    "Sadako",
-    "Pinhead",
+    "Onryo",
+    "Cenobite",
     "Oni",
     "Nightmare",
-    "Bubba",
+    "Cannibal",
   ];
 
   const randomIndex = Math.floor(Math.random() * killers.length);
