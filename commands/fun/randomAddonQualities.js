@@ -1,12 +1,12 @@
 const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
-  name: "randomaddons",
+  name: "randomaddonqualities",
   category: "info",
   permissions: [],
   devCommand: false,
   data: new SlashCommandBuilder()
-    .setName("randomaddons")
+    .setName("randomaddonqualities")
     .setDescription(`Responds with two random addon qualities`),
   async execute(interaction) {
     let killers = [
