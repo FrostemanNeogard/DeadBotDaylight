@@ -36,14 +36,14 @@ const ADDON_QUALITIES = {
 function defaultTextFormatter(unformattedInput) {
   let formattedInput = unformattedInput;
   formattedInput = formattedInput.toLowerCase();
-  formattedInput = formattedInput.replaceAll("the ", "");
   formattedInput = formattedInput.replaceAll("-", "");
   formattedInput = formattedInput.replaceAll("_", "");
   formattedInput = formattedInput.replaceAll(",", "");
   formattedInput = formattedInput.replaceAll(".", "");
+  formattedInput = formattedInput.replaceAll("'", "");
   formattedInput = formattedInput.replaceAll(" ", "");
-  formattedInput = formattedInput.replaceAll("hex: ", "");
-  formattedInput = formattedInput.replaceAll("Hex: ", "");
+  formattedInput = formattedInput.replaceAll("  ", "");
+  formattedInput = formattedInput.replaceAll(":", "");
   return formattedInput;
 }
 
