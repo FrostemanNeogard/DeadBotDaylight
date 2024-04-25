@@ -1,6 +1,12 @@
 const { SlashCommandBuilder, Colors } = require("discord.js");
 const data = require("../../data/addons.json");
 const { EmbedBuilder } = require("@discordjs/builders");
+const {
+  defaultTextFormatter,
+  ADDON_QUALITIES,
+  getRandomAddons,
+  fetchAddonData,
+} = require("../../util/functions");
 
 module.exports = {
   name: "addon",
@@ -14,45 +20,48 @@ module.exports = {
     )
     .addStringOption((option) =>
       option
-        .setName("killername")
-        .setDescription("Killer name")
+        .setName("for")
+        .setDescription("Name of the killer/item")
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName("addonname")
-        .setDescription("Addon name to search for")
+        .setDescription("Name of the addon")
         .setRequired(true)
     ),
   async execute(interaction) {
     const killerName = interaction.options.getString("killername");
     const addonName = interaction.options.getString("addonname");
-    const allAddons = data.filter((item) => item.name === killerName);
-    if (!allAddons) {
-      await interaction.reply("shiiid");
-    }
-    const addon = allAddons[0].addons.filter(
-      (item) => item.name === addonName
-    )[0];
-    console.log(allAddons);
-    console.log(addon);
+
+    const addon = fetchAddonData(killerName, addonName);
+
     if (!addon) {
       await interaction.reply(
         `Couldn't find the specified addon "${addonName}" for: "${killerName}"`
       );
+      return;
     }
 
     const responseEmbed = new EmbedBuilder()
       .setColor(Colors.Purple)
-      .setTitle(killerName)
+      .setTitle(addon.name)
+      .setThumbnail(addon.imageSrc)
+      .setURL(addon.href)
       .setFields(
         {
-          name: "Name",
-          value: addon.name || "no",
+          name: "For",
+          value: allAddons[0].name || "???",
+          inline: true,
+        },
+        {
+          name: "Quality",
+          value: ADDON_QUALITIES[addon.quality] || "???",
+          inline: true,
         },
         {
           name: "Description",
-          value: addon.description || "no",
+          value: addon.description || "Description missing.",
         }
       );
     await interaction.reply({ embeds: [responseEmbed] });
