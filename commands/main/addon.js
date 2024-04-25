@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, Colors } = require("discord.js");
+const { SlashCommandBuilder } = require("discord.js");
 const data = require("../../data/addons.json");
 const { EmbedBuilder } = require("@discordjs/builders");
 const {
@@ -7,6 +7,7 @@ const {
   getRandomAddons,
   fetchAddonData,
 } = require("../../util/functions");
+const { main_color } = require("../../config.json");
 
 module.exports = {
   name: "addon",
@@ -41,7 +42,7 @@ module.exports = {
     }
 
     const responseEmbed = new EmbedBuilder()
-      .setColor(Colors.Purple)
+      .setColor(main_color)
       .setTitle(addon.name)
       .setThumbnail(addon.imageSrc)
       .setURL(addon.href)

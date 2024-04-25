@@ -1,6 +1,7 @@
-const { SlashCommandBuilder, Colors } = require("discord.js");
+const { SlashCommandBuilder } = require("discord.js");
 const data = require("../../data/perks.json");
 const { EmbedBuilder } = require("@discordjs/builders");
+const { main_color } = require("../../config.json");
 
 module.exports = {
   name: "perk",
@@ -26,7 +27,7 @@ module.exports = {
       );
     }
     const responseEmbed = new EmbedBuilder()
-      .setColor(Colors.Purple)
+      .setColor(main_color)
       .setThumbnail(perkData[0].image)
       .setTitle(perkData[0].name)
       .setFields(

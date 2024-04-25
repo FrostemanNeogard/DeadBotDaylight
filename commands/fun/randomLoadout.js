@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder, Colors } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const {
   getRandomKiller,
   getRandomSurvivor,
@@ -7,6 +7,7 @@ const {
   getRandomAddons,
   getRandomPerks,
 } = require("../../util/functions");
+const { main_color } = require("../../config.json");
 
 module.exports = {
   name: "randomloadout",
@@ -80,7 +81,7 @@ module.exports = {
     console.log(randomCharacter, randomAddons);
 
     const responseEmbed = new EmbedBuilder()
-      .setColor(Colors.Purple)
+      .setColor(main_color)
       .setTitle(`Randomized ${isKillerLoadout ? "Killer" : "Survivor"} loadout`)
       .setFields(
         {
