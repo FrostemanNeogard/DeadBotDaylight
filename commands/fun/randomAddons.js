@@ -10,12 +10,12 @@ module.exports = {
     )
     .addStringOption((option) =>
       option
-        .setName("owner")
-        .setDescription("Killer or survivor item.")
+        .setName("for")
+        .setDescription("Name of killer or survivor item to fetch addons for.")
         .setRequired(true)
     ),
   async execute(interaction) {
-    const ownerName = interaction.options.getString("owner");
+    const ownerName = interaction.options.getString("for");
     const addons = getRandomAddons(ownerName);
     if (!addons) {
       return interaction.reply({
