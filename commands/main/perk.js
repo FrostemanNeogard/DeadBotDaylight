@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require("discord.js");
 const data = require("../../data/perks.json");
 const { EmbedBuilder } = require("@discordjs/builders");
 const { main_color } = require("../../config.json");
+const { defaultTextFormatter } = require("../../util/functions");
 
 module.exports = {
   name: "perk",
@@ -21,8 +22,8 @@ module.exports = {
       (item) =>
         formatPerkName(item.name) === formatPerkName(unformattedPerkName)
     );
-    if (!perkData) {
-      await interaction.reply(
+    if (perkData.length <= 0) {
+      return await interaction.reply(
         `Couldn't find the given perk: "${unformattedPerkName}"`
       );
     }
@@ -45,9 +46,12 @@ module.exports = {
 };
 
 function formatPerkName(perkName) {
-  let formattedPerkName = perkName
+  let formattedPerkName = defaultTextFormatter(perkName)
     .toLowerCase()
     .replaceAll("'", "")
-    .replaceAll("and", "&");
+    .replaceAll("the ", "")
+    .replaceAll("-", "")
+    .replaceAll(":", "")
+    .replaceAll("hex", "");
   return formattedPerkName;
 }
