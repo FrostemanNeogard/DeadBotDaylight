@@ -212,7 +212,7 @@ function getRandomKiller() {
     "Nemesis",
     "Artist",
     "Unknown",
-    "Chucky",
+    "Good Guy",
     "Xenomorph",
     "Singularity",
     "Skull merchant",
