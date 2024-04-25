@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
+const { getRandomKiller } = require("../../util/functions");
 
 module.exports = {
   name: "randomkiller",
@@ -9,46 +10,9 @@ module.exports = {
     .setName("randomkiller")
     .setDescription(`Responds with a random killer name`),
   async execute(interaction) {
-    let killers = [
-      "Trapper",
-      "Wraith",
-      "Hillbilly",
-      "Nurs",
-      "Huntress",
-      "Myers",
-      "Hag",
-      "Doctor",
-      "Pig",
-      "Clown",
-      "Spirit",
-      "Legion",
-      "Plague",
-      "Ghostface",
-      "Demogorgon",
-      "Deathslinger",
-      "Pyramid head",
-      "Blight",
-      "Twins",
-      "Trickster",
-      "Nemesis",
-      "Artist",
-      "Unknown",
-      "Chucky",
-      "Xenomorph",
-      "Singularity",
-      "Skull merchant",
-      "Knight",
-      "Wesker",
-      "Dredge",
-      "Sadako",
-      "Pinhead",
-      "Oni",
-      "Nightmare",
-      "Bubba",
-    ];
-
     const randomIndex = Math.floor(Math.random() * killers.length);
-    const responseMessage = `Your randomly selected killer is: ${killers[randomIndex]}`;
+    const randomKiller = killers[randomIndex];
+    const responseMessage = `Your randomly selected killer is: ${randomKiller}`;
     await interaction.reply({ ephemeral: true, content: responseMessage });
   },
 };
