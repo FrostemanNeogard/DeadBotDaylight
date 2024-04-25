@@ -18,7 +18,7 @@ module.exports = {
     ),
   async execute(interaction) {
     const unformattedPerkName = interaction.options.getString("perkname");
-    const allData = [data.survivor, data.killer];
+    const allData = [...data.survivor, ...data.killer];
     const perkData = allData.filter(
       (item) =>
         formatPerkName(item.name) === formatPerkName(unformattedPerkName)
@@ -28,7 +28,6 @@ module.exports = {
         `Couldn't find the given perk: "${unformattedPerkName}"`
       );
     }
-    console.log(perkData);
     const responseEmbed = new EmbedBuilder()
       .setColor(Colors.Purple)
       .setThumbnail(perkData[0].image)
