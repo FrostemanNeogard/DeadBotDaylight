@@ -29,10 +29,19 @@ module.exports = {
           }
         )
         .setRequired(true)
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("hidden")
+        .setDescription(
+          "Whether or not to hide the response message for others. Defaults to false."
+        )
+        .setRequired(false)
     ),
   async execute(interaction) {
     const isKillerLoadout =
       interaction.options.getString("role") == "k" ? true : false;
+    const isPrivate = interaction.options.getBoolean("hidden");
 
     let randomItem = isKillerLoadout ? null : getRandomItem();
 
@@ -117,7 +126,7 @@ module.exports = {
     );
 
     await interaction.reply({
-      ephemeral: true,
+      ephemeral: isPrivate,
       embeds: [responseEmbed],
     });
   },
