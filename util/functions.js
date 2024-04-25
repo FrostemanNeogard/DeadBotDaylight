@@ -1,7 +1,6 @@
 const fs = require("fs");
 const addonData = require("../data/addons.json");
 const perkData = require("../data/perks.json");
-const randomkiller = require("../commands/fun/randomKiller");
 
 const getFiles = (path, ending) => {
   return fs.readdirSync(path).filter((f) => f.endsWith(ending));
