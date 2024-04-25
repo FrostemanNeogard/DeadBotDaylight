@@ -5,11 +5,7 @@ const TOKEN = process.env.TOKEN;
 // Set up discord client (with intents due to API changes)
 const Discord = require("discord.js");
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent,
-  ],
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
 
 // Create bot object
