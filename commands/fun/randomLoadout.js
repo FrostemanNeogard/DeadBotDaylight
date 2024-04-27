@@ -87,7 +87,22 @@ module.exports = {
       ? getRandomAddons(randomCharacter)
       : getRandomAddons(itemCode);
 
-    console.log(randomCharacter, randomAddons);
+    if (
+      !randomOffering ||
+      randomPerks.length <= 0 ||
+      randomAddons.length <= 0 ||
+      !randomCharacter
+    ) {
+      console.error(
+        `An error ocurred: ${
+          (randomCharacter, randomAddons, randomPerks, randomOffering)
+        }`
+      );
+      return interaction.reply({
+        ephemeral: isPrivate,
+        content: `Something went wrong, please try again.`,
+      });
+    }
 
     const responseEmbed = new EmbedBuilder()
       .setColor(main_color)
