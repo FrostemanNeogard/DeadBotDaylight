@@ -15,6 +15,7 @@ module.exports = {
         .setRequired(false)
     ),
   async execute(interaction) {
+    const isPrivate = interaction.options.getBoolean("hidden");
     const randomKiller = getRandomKiller();
     const responseMessage = `Your randomly selected killer is: ${randomKiller}`;
     await interaction.reply({ ephemeral: isPrivate, content: responseMessage });
