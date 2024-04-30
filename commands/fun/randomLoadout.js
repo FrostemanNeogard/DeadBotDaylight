@@ -95,7 +95,11 @@ module.exports = {
     ) {
       console.error(
         `An error ocurred: ${
-          (randomCharacter, randomAddons, randomPerks, randomOffering)
+          (randomCharacter,
+          randomAddons,
+          randomPerks,
+          randomOffering,
+          randomItem)
         }`
       );
       return interaction.reply({
@@ -111,12 +115,10 @@ module.exports = {
         {
           name: "Character",
           value: randomCharacter,
-          inline: true,
         },
         {
           name: "Offering",
           value: randomOffering,
-          inline: true,
         }
       );
 
@@ -124,7 +126,6 @@ module.exports = {
       responseEmbed.addFields({
         name: "Item",
         value: randomItem || "N/A",
-        inline: true,
       });
     }
 
@@ -136,7 +137,6 @@ module.exports = {
       {
         name: "Add-ons",
         value: randomAddons.join("\n"),
-        inline: true,
       }
     );
 
