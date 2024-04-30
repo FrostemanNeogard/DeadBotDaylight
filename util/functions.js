@@ -179,6 +179,9 @@ function getRandomAddons(ownerName) {
     return;
   }
   const allAddons = ownerData[0].addons;
+  if (allAddons.length <= 0) {
+    return;
+  }
   for (let i = 0; i < 2; i++) {
     const randomIndex = Math.floor(Math.random() * allAddons.length);
     const addonName = allAddons[randomIndex].name;
