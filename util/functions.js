@@ -135,7 +135,7 @@ function getRandomSurvivor() {
     "Laurie Strode",
     "Feng Min",
     "Detective Tapp",
-    "Kate Densom",
+    "Kate Denson",
     "Adam Francis",
     "Jeff Johansen",
     "Ashley J. Williams",
