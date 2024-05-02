@@ -77,8 +77,12 @@ function getRandomPerks(isKiller) {
     }
   } else {
     for (let i = 0; i < 4; i++) {
-      let randomIndex = Math.floor(Math.random() * survivorPerks.length);
-      perkName = survivorPerks[randomIndex].name;
+      const randomIndex = Math.floor(Math.random() * survivorPerks.length);
+      const perk = survivorPerks[randomIndex];
+      if (!perk.name) {
+        return;
+      }
+      const perkName = perk.name;
       perks.push(perkName);
       survivorPerks.splice(randomIndex, 1);
     }

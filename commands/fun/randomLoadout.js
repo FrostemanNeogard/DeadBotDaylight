@@ -89,6 +89,7 @@ module.exports = {
 
     if (
       !randomOffering ||
+      !randomPerks ||
       randomPerks.length <= 0 ||
       randomAddons.length <= 0 ||
       !randomCharacter
