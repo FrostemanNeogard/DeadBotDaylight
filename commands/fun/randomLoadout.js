@@ -79,7 +79,7 @@ module.exports = {
       : "Toolboxes";
 
     let randomCharacter = isKillerLoadout
-      ? getRandomKiller()
+      ? await getRandomKiller()
       : getRandomSurvivor();
     let randomOffering = getRandomOffering();
     const randomPerks = getRandomPerks(isKillerLoadout);
