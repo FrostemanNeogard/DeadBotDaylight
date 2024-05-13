@@ -84,8 +84,8 @@ module.exports = {
     let randomOffering = getRandomOffering();
     const randomPerks = getRandomPerks(isKillerLoadout);
     const randomAddons = isKillerLoadout
-      ? getRandomAddons(randomCharacter)
-      : getRandomAddons(itemCode);
+      ? await getRandomAddons(randomCharacter)
+      : await getRandomAddons(itemCode);
 
     if (
       !randomOffering ||
