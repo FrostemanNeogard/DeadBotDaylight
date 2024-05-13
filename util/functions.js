@@ -176,26 +176,11 @@ function getRandomSurvivor() {
   return randomSurvivor;
 }
 
-function getRandomAddons(ownerName) {
-  let addons = [];
-  const ownerData = addonData.filter(
-    (item) =>
-      defaultTextFormatter(item.name) === defaultTextFormatter(ownerName)
-  );
-  if (ownerData.length <= 0) {
-    return;
-  }
-  const allAddons = ownerData[0].addons;
-  if (allAddons.length <= 0) {
-    return;
-  }
-  for (let i = 0; i < 2; i++) {
-    const randomIndex = Math.floor(Math.random() * allAddons.length);
-    const addonName = allAddons[randomIndex].name;
-    addons.push(addonName);
-    allAddons.splice(randomIndex, 1);
-  }
-  return addons;
+async function getRandomAddons(ownerName) {
+  const apiUrl = BASE_API_URL + `addons/${ownerName}/random`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  return data;
 }
 
 async function getRandomKiller() {
