@@ -1,6 +1,9 @@
 const fs = require("fs");
 const addonData = require("../data/addons.json");
 const perkData = require("../data/perks.json");
+const fetch = require("node-fetch");
+require("dotenv").config();
+const BASE_API_URL = process.env.BASE_API_URL;
 
 const getFiles = (path, ending) => {
   return fs.readdirSync(path).filter((f) => f.endsWith(ending));
@@ -195,48 +198,13 @@ function getRandomAddons(ownerName) {
   return addons;
 }
 
-function getRandomKiller() {
-  let killers = [
-    "Trapper",
-    "Wraith",
-    "Hillbilly",
-    "Nurse",
-    "Huntress",
-    "Shape",
-    "Hag",
-    "Doctor",
-    "Pig",
-    "Clown",
-    "Spirit",
-    "Legion",
-    "Plague",
-    "Ghostface",
-    "Demogorgon",
-    "Deathslinger",
-    "Executioner",
-    "Blight",
-    "Twins",
-    "Trickster",
-    "Nemesis",
-    "Artist",
-    "Unknown",
-    "Good Guy",
-    "Xenomorph",
-    "Singularity",
-    "Skull merchant",
-    "Knight",
-    "Mastermind",
-    "Dredge",
-    "Onryo",
-    "Cenobite",
-    "Oni",
-    "Nightmare",
-    "Cannibal",
-  ];
-
-  const randomIndex = Math.floor(Math.random() * killers.length);
-  const randomKiller = killers[randomIndex];
-  return randomKiller;
+async function getRandomKiller() {
+  const apiUrl = BASE_API_URL + "killers/random";
+  console.log(apiUrl);
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const killerName = data[0].name;
+  return killerName;
 }
 
 module.exports = {
