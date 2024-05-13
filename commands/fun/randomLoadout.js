@@ -78,10 +78,10 @@ module.exports = {
       ? "Toolboxes"
       : "Toolboxes";
 
-    let randomCharacter = isKillerLoadout
+    const randomCharacter = isKillerLoadout
       ? await getRandomKiller()
       : await getRandomSurvivor();
-    let randomOffering = await getRandomOffering();
+    const randomOffering = await getRandomOffering();
     const randomPerks = getRandomPerks(isKillerLoadout);
     const randomAddons = isKillerLoadout
       ? await getRandomAddons(randomCharacter)
