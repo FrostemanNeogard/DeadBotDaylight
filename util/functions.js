@@ -126,54 +126,12 @@ function getRandomOffering() {
   return randomOffering;
 }
 
-function getRandomSurvivor() {
-  let survivors = [
-    "Dwight Fairfield",
-    "Meg Thomas",
-    "Claudette Morel",
-    "Jake Park",
-    "Nea Karlsson",
-    'William "Bill" Overbeck',
-    "David King",
-    "Laurie Strode",
-    "Feng Min",
-    "Detective Tapp",
-    "Kate Denson",
-    "Adam Francis",
-    "Jeff Johansen",
-    "Ashley J. Williams",
-    "Nancy Wheeler",
-    "Steve Harrington",
-    "Zarina Kassir",
-    "Cheryl Manson",
-    "Felix Richter",
-    "Yun-Jin Lee",
-    "Jill Valentine",
-    "Leon S. Kennedy",
-    "Jonah Vasquez",
-    "Gabriel Soma",
-    "Sable Ward",
-    "Alan Wake",
-    "Ellen Ripley",
-    "Nicolas Cage",
-    "Renato Lyra",
-    "Thalita Lyra",
-    "Vittorio Toscano",
-    "Rebecca Chambers",
-    "Ada Wong",
-    "Haddie Kaur",
-    "Yoichi Asakawa",
-    "Mikaela Reid",
-    "Élodie Rakoto",
-    "Yui Kimura",
-    "Jane Romero",
-    "Quentin Smith",
-    "Ace Visconti",
-  ];
-
-  const randomIndex = Math.floor(Math.random() * survivors.length);
-  const randomSurvivor = survivors[randomIndex];
-  return randomSurvivor;
+async function getRandomSurvivor() {
+  const apiUrl = BASE_API_URL + "survivors/random";
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const survivorName = data[0].name;
+  return survivorName;
 }
 
 async function getRandomAddons(ownerName) {
