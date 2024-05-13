@@ -119,11 +119,12 @@ function getRandomItem() {
   return randomItem;
 }
 
-function getRandomOffering() {
-  let offerings = ["Brown", "Yellow", "Green", "Purple"];
-  const randomIndex = Math.floor(Math.random() * offerings.length);
-  const randomOffering = offerings[randomIndex];
-  return randomOffering;
+async function getRandomOffering(role) {
+  const apiUrl = BASE_API_URL + `offerings/random?role=${role}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const offering = data[0].name;
+  return offering;
 }
 
 async function getRandomSurvivor() {
