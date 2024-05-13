@@ -51,19 +51,15 @@ function defaultTextFormatter(unformattedInput) {
   return formattedInput;
 }
 
-function fetchAddonData(ownerName, addonName) {
-  const allAddons = addonData.filter(
-    (item) =>
-      defaultTextFormatter(item.name) === defaultTextFormatter(killerName)
-  );
-  if (allAddons.length <= 0) {
+async function fetchAddonData(ownerName, addonName) {
+  if (!addonName) {
     return;
   }
-  const addon = allAddons[0].addons.filter(
-    (item) =>
-      defaultTextFormatter(item.name) === defaultTextFormatter(addonName)
-  )[0];
-  return addon;
+  const apiUrl = BASE_API_URL + `addons/${ownerName}?name=${addonName}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const addon = data;
+  return perkNames;
 }
 
 async function getRandomPerks(isKiller) {
