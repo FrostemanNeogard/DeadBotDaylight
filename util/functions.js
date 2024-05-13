@@ -66,31 +66,13 @@ function fetchAddonData(ownerName, addonName) {
   return addon;
 }
 
-function getRandomPerks(isKiller) {
-  const killerPerks = perkData.killer;
-  const survivorPerks = perkData.survivor;
-  let perkName = "";
-  let perks = [];
-  if (isKiller) {
-    for (let i = 0; i < 4; i++) {
-      let randomIndex = Math.floor(Math.random() * killerPerks.length);
-      perkName = killerPerks[randomIndex].name;
-      perks.push(perkName);
-      killerPerks.splice(randomIndex, 1);
-    }
-  } else {
-    for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.floor(Math.random() * survivorPerks.length);
-      const perk = survivorPerks[randomIndex];
-      if (!perk.name) {
-        return;
-      }
-      const perkName = perk.name;
-      perks.push(perkName);
-      survivorPerks.splice(randomIndex, 1);
-    }
-  }
-  return perks;
+async function getRandomPerks(isKiller) {
+  const apiUrl =
+    BASE_API_URL + `perks/random?role=${isKiller ? "killer" : "survivor"}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const perkNames = data.map((perk) => perk.name);
+  return perkNames;
 }
 
 async function getRandomItem() {
