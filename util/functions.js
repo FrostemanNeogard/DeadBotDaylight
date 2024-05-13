@@ -59,7 +59,7 @@ async function fetchAddonData(ownerName, addonName) {
   const response = await fetch(apiUrl);
   const data = await response.json();
   const addon = data;
-  return perkNames;
+  return addon;
 }
 
 async function getRandomPerks(isKiller) {
