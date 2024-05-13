@@ -180,7 +180,8 @@ async function getRandomAddons(ownerName) {
   const apiUrl = BASE_API_URL + `addons/${ownerName}/random`;
   const response = await fetch(apiUrl);
   const data = await response.json();
-  return data;
+  const addonNames = data.map((addon) => addon.name);
+  return addonNames;
 }
 
 async function getRandomKiller() {
