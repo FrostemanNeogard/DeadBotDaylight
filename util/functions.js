@@ -200,7 +200,6 @@ function getRandomAddons(ownerName) {
 
 async function getRandomKiller() {
   const apiUrl = BASE_API_URL + "killers/random";
-  console.log(apiUrl);
   const response = await fetch(apiUrl);
   const data = await response.json();
   const killerName = data[0].name;
