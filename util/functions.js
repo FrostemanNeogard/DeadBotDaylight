@@ -58,7 +58,7 @@ async function fetchAddonData(ownerName, addonName) {
   const apiUrl = BASE_API_URL + `addons/${ownerName}?name=${addonName}`;
   const response = await fetch(apiUrl);
   const data = await response.json();
-  const addon = data;
+  const addon = data[0];
   return addon;
 }
 
