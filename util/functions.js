@@ -93,30 +93,12 @@ function getRandomPerks(isKiller) {
   return perks;
 }
 
-function getRandomItem() {
-  let items = [
-    "Flashlight",
-    "Sport Flashlight",
-    "Utility Flashlight",
-    "Broken key",
-    "Dull Key",
-    "Skeleton Key",
-    "Map",
-    "Rainbow Map",
-    "Camping Aid Kit",
-    "First Aid Kit",
-    "Emergency Med-Kit",
-    "Ranger Med-Kit",
-    "Worn-Out Tools",
-    "Toolbox",
-    "Commodious Toolbox",
-    "Mechanic's Toolbox",
-    "Alex's Toolbox",
-    "Engineer's Toolbox",
-  ];
-  const randomIndex = Math.floor(Math.random() * items.length);
-  const randomItem = items[randomIndex];
-  return randomItem;
+async function getRandomItem() {
+  const apiUrl = BASE_API_URL + `items/random`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const item = data[0].name;
+  return item;
 }
 
 async function getRandomOffering(role) {
