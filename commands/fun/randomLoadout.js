@@ -43,9 +43,9 @@ module.exports = {
       interaction.options.getString("role") == "k" ? true : false;
     const isPrivate = interaction.options.getBoolean("hidden");
 
-    let randomItem = isKillerLoadout ? null : await getRandomItem();
+    const randomItem = isKillerLoadout ? null : await getRandomItem();
 
-    let items = [
+    const items = [
       "Flashlight",
       "Sport Flashlight",
       "Utility Flashlight",
