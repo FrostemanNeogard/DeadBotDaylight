@@ -80,7 +80,7 @@ module.exports = {
 
     let randomCharacter = isKillerLoadout
       ? await getRandomKiller()
-      : getRandomSurvivor();
+      : await getRandomSurvivor();
     let randomOffering = getRandomOffering();
     const randomPerks = getRandomPerks(isKillerLoadout);
     const randomAddons = isKillerLoadout
