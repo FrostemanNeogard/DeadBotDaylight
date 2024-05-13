@@ -101,8 +101,9 @@ async function getRandomItem() {
   return item;
 }
 
-async function getRandomOffering(role) {
-  const apiUrl = BASE_API_URL + `offerings/random?role=${role}`;
+async function getRandomOffering(isKiller) {
+  const apiUrl =
+    BASE_API_URL + `offerings/random?role=${isKiller ? "killer" : "survivor"}`;
   const response = await fetch(apiUrl);
   const data = await response.json();
   const offering = data[0].name;
