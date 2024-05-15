@@ -25,7 +25,7 @@ module.exports = {
   async execute(interaction) {
     const ownerName = interaction.options.getString("for");
     const isPrivate = interaction.options.getBoolean("hidden");
-    const addons = getRandomAddons(ownerName);
+    const addons = await getRandomAddons(ownerName);
     if (!addons) {
       return interaction.reply({
         ephemeral: isPrivate,
