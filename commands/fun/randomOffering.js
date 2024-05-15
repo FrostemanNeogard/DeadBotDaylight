@@ -15,7 +15,7 @@ module.exports = {
         .setRequired(false)
     ),
   async execute(interaction) {
-    const randomOffering = getRandomOffering();
+    const randomOffering = await getRandomOffering();
     const isPrivate = interaction.options.getBoolean("hidden");
     const responseMessage = `Your randomly selected offering quality is:\n- ${randomOffering}`;
     await interaction.reply({ ephemeral: isPrivate, content: responseMessage });
