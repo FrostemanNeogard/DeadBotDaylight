@@ -34,7 +34,7 @@ module.exports = {
     const isKillerPerk =
       interaction.options.getString("role") == "k" ? true : false;
     const isPrivate = interaction.options.getBoolean("hidden");
-    const perks = getRandomPerks(isKillerPerk);
+    const perks = await getRandomPerks(isKillerPerk);
     await interaction.reply({
       ephemeral: isPrivate,
       content: `**Your random perks are: **\n- ${perks.join("\n- ")}`,
