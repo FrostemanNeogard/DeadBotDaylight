@@ -16,7 +16,7 @@ module.exports = {
     ),
   async execute(interaction) {
     const isPrivate = interaction.options.getBoolean("hidden");
-    const randomItem = getRandomItem();
+    const randomItem = await getRandomItem();
     const responseMessage = `Your randomly selected item is: "${randomItem}".`;
     await interaction.reply({ ephemeral: isPrivate, content: responseMessage });
   },
