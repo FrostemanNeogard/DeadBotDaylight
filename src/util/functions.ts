@@ -78,7 +78,7 @@ export async function fetchRandomOfferings(
   return data;
 }
 
-export async function fetchRandomItem(): Promise<Item[] | void> {
+export async function fetchRandomItems(): Promise<Item[] | void> {
   const apiUrl = BASE_API_URL + `items/random`;
   const response = await fetch(apiUrl);
   const data: Item[] = await response.json();
