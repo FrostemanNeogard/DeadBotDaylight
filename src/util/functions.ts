@@ -1,6 +1,10 @@
+import { Addon } from "../__types/addon";
+import { Killer } from "../__types/killer";
+import { Perk } from "../__types/perk";
+
 const { BASE_API_URL } = process.env;
 
-export async function fetchPerkData(perkName: string) {
+export async function fetchPerkData(perkName: string): Promise<Perk | void> {
   if (!perkName) {
     return;
   }
@@ -11,7 +15,10 @@ export async function fetchPerkData(perkName: string) {
   return perk;
 }
 
-export async function fetchAddonData(ownerName: string, addonName: string) {
+export async function fetchAddonData(
+  ownerName: string,
+  addonName: string
+): Promise<Addon | void> {
   if (!addonName) {
     return;
   }
@@ -22,10 +29,13 @@ export async function fetchAddonData(ownerName: string, addonName: string) {
   return addon;
 }
 
-export async function fetchRandomKiller() {
+export async function fetchRandomKiller(): Promise<Killer | void> {
   const apiUrl = BASE_API_URL + "killers/random";
   const response = await fetch(apiUrl);
   const data = await response.json();
   const killer = data[0];
+  if (!killer) {
+    return;
+  }
   return killer;
 }
