@@ -20,10 +20,10 @@ export class PerkCommands {
       required: true,
       type: ApplicationCommandOptionType.String,
     })
-    perkname: string,
+    perkName: string,
     interaction: CommandInteraction
   ): Promise<void> {
-    const perkData: Perk = await fetchPerkData(perkname);
+    const perkData: Perk = await fetchPerkData(perkName);
     const responseEmbed = new EmbedBuilder()
       .setColor(COLORS.main)
       .setThumbnail(perkData.image)
