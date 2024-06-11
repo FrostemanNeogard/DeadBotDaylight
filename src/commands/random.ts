@@ -13,6 +13,7 @@ import {
   fetchRandomOfferings,
   fetchRandomPerks,
   fetchRandomSurvivors,
+  getItemCodeFromItemName,
 } from "../util/functions";
 import { Killer } from "../__types/killer";
 import { Survivor } from "../__types/survivor";
@@ -176,7 +177,9 @@ export class RandomCommands {
     }
 
     const randomAddons: Addon[] | void = await fetchRandomAddons(
-      isKiller ? randomCharacter[0].name : randomItem[0].name
+      isKiller
+        ? randomCharacter[0].name
+        : getItemCodeFromItemName(randomItem[0].name)
     );
     if (!randomAddons) {
       return;
