@@ -21,3 +21,11 @@ export async function fetchAddonData(ownerName: string, addonName: string) {
   const addon = data[0];
   return addon;
 }
+
+export async function fetchRandomKiller() {
+  const apiUrl = BASE_API_URL + "killers/random";
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const killer = data[0];
+  return killer;
+}
