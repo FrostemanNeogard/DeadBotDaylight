@@ -68,7 +68,6 @@ export async function fetchRandomAddons(
   ownerName: string
 ): Promise<Addon[] | void> {
   const apiUrl = BASE_API_URL + `addons/${ownerName}/random`;
-  console.log(apiUrl);
   const response = await fetch(apiUrl);
   if (response.status != 200) {
     return;
