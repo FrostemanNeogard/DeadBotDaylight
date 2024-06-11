@@ -7,6 +7,7 @@ import { Discord, Slash, SlashOption } from "discordx";
 import { fetchPerkData } from "../util/functions";
 import { COLORS } from "../util/config";
 import { Addon } from "../__types/addon";
+import { ADDON_QUALITIES } from "../util/constants";
 
 @Discord()
 export class AddonCommands {
@@ -36,7 +37,7 @@ export class AddonCommands {
         },
         {
           name: "Quality",
-          value: addonData.quality,
+          value: ADDON_QUALITIES[addonData.quality],
         }
       );
     await interaction.reply({ embeds: [responseEmbed] });
