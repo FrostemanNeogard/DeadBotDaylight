@@ -10,3 +10,14 @@ export async function fetchPerkData(perkName: string) {
   const perk = data[0];
   return perk;
 }
+
+export async function fetchAddonData(ownerName: string, addonName: string) {
+  if (!addonName) {
+    return;
+  }
+  const apiUrl = BASE_API_URL + `addons/${ownerName}?name=${addonName}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  const addon = data[0];
+  return addon;
+}
