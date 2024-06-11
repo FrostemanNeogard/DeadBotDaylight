@@ -3,7 +3,7 @@ import {
   type CommandInteraction,
 } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { fetchRandomKiller } from "../util/functions";
+import { fetchRandomKillers } from "../util/functions";
 import { Killer } from "../__types/killer";
 
 @Discord()
@@ -21,8 +21,14 @@ export class RandomCommands {
     hidden: boolean,
     interaction: CommandInteraction
   ): Promise<void> {
-    const randomKiller: Killer = await fetchRandomKiller();
-    const responseMessage = `Your randomly selected killer is: ${randomKiller.name}`;
+    const randomKillers: Killer[] | void = await fetchRandomKillers();
+    if (!randomKillers) {
+      await interaction.reply(
+        `An error ocurred when fetching random killer. Please try again later.`
+      );
+      return;
+    }
+    const responseMessage = `Your randomly selected killer is: ${randomKillers[0].name}`;
     await interaction.reply({ ephemeral: hidden, content: responseMessage });
   }
 }

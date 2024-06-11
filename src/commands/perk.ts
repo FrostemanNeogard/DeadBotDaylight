@@ -23,7 +23,13 @@ export class PerkCommands {
     perkName: string,
     interaction: CommandInteraction
   ): Promise<void> {
-    const perkData: Perk = await fetchPerkData(perkName);
+    const perkData: Perk | void = await fetchPerkData(perkName);
+    if (!perkData) {
+      await interaction.reply(
+        `Couldn't fetch perk data. Please try again later.`
+      );
+      return;
+    }
     const responseEmbed = new EmbedBuilder()
       .setColor(COLORS.main)
       .setThumbnail(perkData.image)
