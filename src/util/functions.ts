@@ -124,3 +124,40 @@ export async function fetchRandomPerks(
   }
   return data;
 }
+
+export function getItemCodeFromItemName(itemName: string) {
+  const items = [
+    "Flashlight",
+    "Sport Flashlight",
+    "Utility Flashlight",
+    "Broken key",
+    "Dull Key",
+    "Skeleton Key",
+    "Map",
+    "Rainbow Map",
+    "Camping Aid Kit",
+    "First Aid Kit",
+    "Emergency Med-Kit",
+    "Ranger Med-Kit",
+    "Worn-Out Tools",
+    "Toolbox",
+    "Commodious Toolbox",
+    "Mechanic's Toolbox",
+    "Alex's Toolbox",
+    "Engineer's Toolbox",
+  ];
+
+  const itemCode = items.slice(0, 3).includes(itemName)
+    ? "Flashlights"
+    : items.slice(3, 6).includes(itemName)
+    ? "Keys"
+    : items.slice(6, 8).includes(itemName)
+    ? "Maps"
+    : items.slice(8, 12).includes(itemName)
+    ? "Med-Kits"
+    : items.slice(12, 18).includes(itemName)
+    ? "Toolboxes"
+    : "Toolboxes";
+
+  return itemCode;
+}
