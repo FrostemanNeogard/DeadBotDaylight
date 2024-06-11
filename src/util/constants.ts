@@ -6,3 +6,8 @@ export const ADDON_QUALITIES: { [key: string]: string } = {
   "4": "Very rare",
   "5": "Iridescent",
 };
+
+export const ROLES = {
+  Killer: "killer",
+  Survivor: "survivor",
+};
