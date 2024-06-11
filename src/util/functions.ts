@@ -32,7 +32,7 @@ export async function fetchAddonData(
   return addon;
 }
 
-export async function fetchRandomKiller(): Promise<Killer | void> {
+export async function fetchRandomKillers(): Promise<Killer[] | void> {
   const apiUrl = BASE_API_URL + "killers/random";
   const response = await fetch(apiUrl);
   const data = await response.json();
