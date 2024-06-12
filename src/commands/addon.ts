@@ -4,7 +4,7 @@ import {
   type CommandInteraction,
 } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
-import { fetchPerkData } from "../util/functions";
+import { fetchAddonData, fetchPerkData } from "../util/functions";
 import { COLORS } from "../util/config";
 import { Addon } from "../__types/addon";
 import { ADDON_QUALITIES } from "../util/constants";
@@ -22,9 +22,19 @@ export class AddonCommands {
       type: ApplicationCommandOptionType.String,
     })
     addonName: string,
+    @SlashOption({
+      name: `for`,
+      description: `Killer- or itemname for the given addon`,
+      required: true,
+      type: ApplicationCommandOptionType.String,
+    })
+    owner: string,
     interaction: CommandInteraction
   ): Promise<void> {
-    const addonData: Addon = await fetchPerkData(addonName);
+    const addonData = await fetchAddonData(addonName, owner);
+    if (!addonData) {
+      return;
+    }
     const responseEmbed = new EmbedBuilder()
       .setColor(COLORS.main)
       .setTitle(addonData.name)
