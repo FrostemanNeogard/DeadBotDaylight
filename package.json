@@ -16,13 +16,14 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "test"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
     "@types/node": "^20.14.1",
+    "jest": "^29.7.0",
     "tsx": "^4.11.2"
   },
   "type": "module"
